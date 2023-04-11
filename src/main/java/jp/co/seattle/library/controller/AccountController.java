@@ -49,26 +49,28 @@ public class AccountController {
 
 		// バリデーションチェック、パスワード一致チェック（タスク１）
 		//String regex_AlphaNum = "^[A-Za-z0-9]+$" ; // 半角英数字
-		if(password.matches("[0-9a-zA-Z+") && password.length() >= 8) {
-			
-		}else {
-			model.addAttribute("errorMessage","パスワードは８文字以上かつ半角英数字にしてください");
-		}
-		
-		//boolean passwordResult = password(password);
-		if (password.equals(passwordForCheck)) {
-			model.addAttribute("errorMessage", "パスワード設定完了しました");
-		}else{
-			model.addAttribute("errorMessage", "パスワードが一致しません。");
+		if (password.matches("^[A-Za-z0-9]+$\"") && password.length() >= 8) {
+			if (password.equals(passwordForCheck)) {
+				// パラメータで受け取ったアカウント情報をDtoに格納する。
+				UserInfo userInfo = new UserInfo();
+				userInfo.setEmail(email);
+				userInfo.setPassword(password);
+				usersService.registUser(userInfo);
+			} else {
+				model.addAttribute("errorMessage", "パスワードが一致しません。");
+				return "createAccount";
+			}
+		} else {
+			model.addAttribute("errorMessage", "パスワードは８文字以上かつ半角英数字にしてください");
 			return "createAccount";
 		}
-		
-		
-		// パラメータで受け取ったアカウント情報をDtoに格納する。
+
+		/*パラメータで受け取ったアカウント情報をDtoに格納する。
 		UserInfo userInfo = new UserInfo();
 		userInfo.setEmail(email);
 		userInfo.setPassword(password);
 		usersService.registUser(userInfo);
+		*/
 		return "redirect:/login";
 	}
 
