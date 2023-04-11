@@ -44,11 +44,6 @@ public class LoginController {
 		UserInfo selectedUserInfo = usersService.selectUserInfo(email, password);
 
 		// ユーザーが存在すればログイン、存在しなければエラー(タスク２)
-		/*if (email.isEmpty() && password.isEmpty()) {
-			model.addAttribute("errorMessage", "パスワードが存在しません");
-			return "return";
-		}*/
-
 		if (!(StringUtils.isEmpty(selectedUserInfo))) {
 			return "redirect:/home";
 		} else {
