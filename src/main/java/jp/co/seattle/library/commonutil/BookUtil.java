@@ -62,12 +62,12 @@ public class BookUtil {
 			if (publishDate.length() >= 0) {
 				if (publishDate.length() == 8) {
 					return true;
-				 } else {
-					return false;
-					}
 				} else {
-					return true;
+					return false;
 				}
+			} else {
+				return true;
+			}
 		} catch (Exception p) {
 			p.printStackTrace();
 			return false;
@@ -88,7 +88,7 @@ public class BookUtil {
 			} else {
 				return false;
 			}
-		}else {
+		} else {
 			return true;
 		}
 
@@ -102,10 +102,10 @@ public class BookUtil {
 	 */
 	private static boolean isEmptyBookInfo(BookDetailsInfo bookInfo) {
 		//TODO　タイトル、著者、出版社、出版日のどれか一つでもなかったらtrue（タスク４）
-		if((StringUtils.isEmpty(bookInfo.getTitle())) || (StringUtils.isEmpty(bookInfo.getAuthor()))
-				||(StringUtils.isEmpty(bookInfo.getPublisher())) || (StringUtils.isEmpty(bookInfo.getPublishDate()))){
+		if ((StringUtils.isEmpty(bookInfo.getTitle())) || (StringUtils.isEmpty(bookInfo.getAuthor()))
+				|| (StringUtils.isEmpty(bookInfo.getPublisher())) || (StringUtils.isEmpty(bookInfo.getPublishDate()))) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
