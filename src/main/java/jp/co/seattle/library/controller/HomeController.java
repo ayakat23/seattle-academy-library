@@ -35,11 +35,6 @@ public class HomeController {
 		List<BookInfo>bookList = booksService.getBookList();
 		model.addAttribute("bookList",bookList);
 		
-		
-		 //BooksService getbookInfo = BooksService.getBookList();
-		//Mam<String, String> info = BooksService.getBookInfo(title,author);
-		
-
 		return "home";
 	}
 
