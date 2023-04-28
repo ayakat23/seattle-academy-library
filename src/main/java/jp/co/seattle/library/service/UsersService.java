@@ -52,4 +52,13 @@ public class UsersService {
 		}
 	}
 
+	public void reserUser(UserInfo userInfo) {
+
+		// SQL生成
+		String sql = "UPDATE users SET email = userInfo.getEmail(), password = ?, reg_date = now(),upd_date = now()  WHERE id = 1;";
+		jdbcTemplate.update(sql, userInfo.getEmail(), userInfo.getPassword(), userInfo.getUserId());
+
+		jdbcTemplate.update(sql);
+	}
+
 }
